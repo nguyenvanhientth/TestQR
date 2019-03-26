@@ -11,8 +11,10 @@
     "react": "16.8.3",
     "react-native": "0.59.2",
     "react-native-camera": "^2.1.0",
+    "react-native-gesture-handler": "^1.1.0",
     "react-native-qrcode": "^0.2.7",
-    "react-native-qrcode-scanner": "^1.1.2"
+    "react-native-qrcode-scanner": "^1.1.2",
+    "react-navigation": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",

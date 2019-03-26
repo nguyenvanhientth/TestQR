@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Platform, Text,StyleSheet, View, TouchableOpacity, TextInput, Linking, ScrollView} from 'react-native';
+import {Platform, Text,StyleSheet, View, TouchableOpacity, TextInput, ScrollView} from 'react-native';
 import QRCode from 'react-native-qrcode';
-import QRCodeScanner from 'react-native-qrcode-scanner';
 
 export default class TestQR extends Component {
     constructor(props){
@@ -10,14 +9,11 @@ export default class TestQR extends Component {
             text: 'hien'
         }
     }
-    onPress = (e) => {
-        Linking
-      .openURL(e.data)
-      .catch(err => console.error('An error occured', err));
+    onPress = () => {
+        this.props.navigation.navigate('Scanner');
       }
     render(){
         return (
-            <ScrollView style = {styles.iosStyle}>
             <View style = {styles.container}>
                 <TextInput
                 style={styles.input}
@@ -29,22 +25,10 @@ export default class TestQR extends Component {
                     size={200}
                     bgColor='purple'
                     fgColor='white'/>
-
-                <QRCodeScanner
-                        onRead={this.onPress.bind(this)}
-                        topContent={
-                        <Text style={styles.centerText}>
-                            Go to <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on your computer and scan the QR code.
-                        </Text>
-                        }
-                        bottomContent={
-                        <TouchableOpacity style={styles.buttonTouchable}>
-                            <Text style={styles.buttonText}>OK. Got it!</Text>
-                        </TouchableOpacity>
-                        }
-                    />
+                <TouchableOpacity style={styles.buttonTouchable} onPress = {()=>this.onPress()}>
+                  <Text style={styles.buttonText}>OpenScanQR</Text>
+                </TouchableOpacity>
             </View>
-            </ScrollView>
         )
     }
 }
